@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppsByLogik | Custom Apps Built for Real Life</title>
+  <meta name="description" content="AppsByLogik builds practical, polished, user-focused apps for creators, families, small businesses, and everyday productivity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="AppsByLogik home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path d="M24 4 41.3 14v20L24 44 6.7 34V14L24 4Z" fill="none" stroke="currentColor" stroke-width="4" />
+            <path d="M24 13 33.5 18.5v11L24 35l-9.5-5.5v-11L24 13Z" fill="currentColor" opacity=".18" />
+          </svg>
+        </span>
+        <span class="brand-text">AppsBy<span>Logik</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="#top">Home</a>
+        <div class="dropdown">
+          <button class="dropdown-button" type="button" aria-expanded="false">
+            Apps
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="dropdown-menu" aria-label="Apps list">
+            <a href="#craftpricer"><span class="app-icon blue">CP</span><span><strong>CraftPricer</strong><small>Pricing calculator</small></span></a>
+            <a href="#craftcommand"><span class="app-icon purple">CC</span><span><strong>CraftCommand</strong><small>Business command center</small></span></a>
+            <a href="#brainjar"><span class="app-icon green">BJ</span><span><strong>BrainJar</strong><small>Notes and organization</small></span></a>
+            <a href="#craftstock"><span class="app-icon gold">CS</span><span><strong>CraftStock</strong><small>Inventory tracking</small></span></a>
+            <a href="#fammesh"><span class="app-icon red">FM</span><span><strong>FamMesh</strong><small>Family tools</small></span></a>
+            <a href="#all-apps" class="dropdown-all">View All Apps <span>→</span></a>
+          </div>
+        </div>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Innovate. Build. Elevate.</p>
+          <h1>Professional apps built for <span>real life.</span></h1>
+          <p class="hero-subtitle">AppsByLogik creates clean, reliable, and user-focused apps for creators, families, small businesses, and everyday problem solvers.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#all-apps">Explore Apps <span>→</span></a>
+            <a class="btn secondary" href="#contact">Get In Touch <span>→</span></a>
+          </div>
+          <div class="trust-row" aria-label="Business highlights">
+            <div><strong>Modern</strong><span>Polished UI</span></div>
+            <div><strong>Practical</strong><span>Real tools</span></div>
+            <div><strong>Scalable</strong><span>Built to grow</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="App previews">
+          <div class="phone phone-one">
+            <div class="phone-top"></div>
+            <div class="phone-screen">
+              <div class="screen-head"><span>CraftCommand</span><b>+</b></div>
+              <div class="stat-card"><small>Monthly Revenue</small><strong>$2,846</strong></div>
+              <div class="screen-list"><span>Orders</span><b>18</b></div>
+              <div class="screen-list"><span>Customers</span><b>42</b></div>
+              <div class="screen-list"><span>Inventory</span><b>156</b></div>
+              <div class="progress"><span></span></div>
+            </div>
+          </div>
+          <div class="phone phone-two">
+            <div class="phone-top"></div>
+            <div class="phone-screen alt">
+              <div class="screen-head"><span>BrainJar</span><b>✓</b></div>
+              <div class="note-card">Project ideas</div>
+              <div class="note-card">App roadmap</div>
+              <div class="note-card">Voice note</div>
+              <div class="dock"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apps section-pad light" id="all-apps">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">Our Apps</p>
+          <h2>Tools made simple, useful, and polished.</h2>
+          <p>Replace the app details below with your live Google Play links whenever each app is ready.</p>
+        </div>
+
+        <div class="app-grid">
+          <article class="app-card" id="craftpricer">
+            <div class="app-icon-large blue">CP</div>
+            <h3>CraftPricer</h3>
+            <p>Calculate product costs, labor, profit, and pricing for handmade and craft businesses.</p>
+            <a href="#contact">Learn More →</a>
+          </article>
+          <article class="app-card" id="craftcommand">
+            <div class="app-icon-large purple">CC</div>
+            <h3>CraftCommand</h3>
+            <p>A business command center for customers, orders, projects, and inventory tracking.</p>
+            <a href="#contact">Learn More →</a>
+          </article>
+          <article class="app-card" id="brainjar">
+            <div class="app-icon-large green">BJ</div>
+            <h3>BrainJar</h3>
+            <p>A clean notes and organization app built for folders, attachments, ideas, and focus.</p>
+            <a href="#contact">Learn More →</a>
+          </article>
+          <article class="app-card" id="craftstock">
+            <div class="app-icon-large gold">CS</div>
+            <h3>CraftStock</h3>
+            <p>Track craft materials, supplies, inventory, and stock levels with less hassle.</p>
+            <a href="#contact">Learn More →</a>
+          </article>
+          <article class="app-card" id="fammesh">
+            <div class="app-icon-large red">FM</div>
+            <h3>FamMesh</h3>
+            <p>Family-focused tools for chores, points, routines, bills, and home organization.</p>
+            <a href="#contact">Learn More →</a>
+          </article>
+          <article class="app-card">
+            <div class="app-icon-large slate">+</div>
+            <h3>More Coming Soon</h3>
+            <p>AppsByLogik keeps building practical apps for real problems and everyday users.</p>
+            <a href="#contact">Suggest an App →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-pad" id="services">
+      <div class="container split-grid">
+        <div class="section-heading">
+          <p class="eyebrow">What We Do</p>
+          <h2>End-to-end app development with a practical mindset.</h2>
+          <p>From idea to launch, AppsByLogik focuses on apps that look professional, work reliably, and make sense for real users.</p>
+        </div>
+        <div class="service-list">
+          <div><span>01</span><h3>App Strategy</h3><p>Plan features, pricing, monetization, store pages, and release steps.</p></div>
+          <div><span>02</span><h3>Design & UI</h3><p>Create clean layouts, consistent branding, and simple user flows.</p></div>
+          <div><span>03</span><h3>Development</h3><p>Build practical Android and web-ready projects with organized code.</p></div>
+          <div><span>04</span><h3>Launch Support</h3><p>Prepare assets, policies, testing notes, and marketing materials.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section-pad light" id="about">
+      <div class="container about-box">
+        <div>
+          <p class="eyebrow">About AppsByLogik</p>
+          <h2>Built by a creator who understands real-world problems.</h2>
+        </div>
+        <p>AppsByLogik is focused on building useful apps across many categories: business tools, craft calculators, family organization, productivity, notes, inventory, and more. The goal is simple: make apps that are easy to use, visually polished, and actually helpful.</p>
+      </div>
+    </section>
+
+    <section class="contact section-pad" id="contact">
+      <div class="container contact-card">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Have an app idea or need support?</h2>
+          <p>Use this section for your email, Google Play developer page, social links, or a contact form embed from Google Sites.</p>
+        </div>
+        <a class="btn primary" href="mailto:livlogik@gmail.com">Email AppsByLogik <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4 41.3 14v20L24 44 6.7 34V14L24 4Z" fill="none" stroke="currentColor" stroke-width="4" /></svg></span>
+          <span class="brand-text">AppsBy<span>Logik</span></span>
+        </a>
+        <p>Building apps that make a difference.</p>
+      </div>
+      <div><h4>Quick Links</h4><a href="#all-apps">Apps</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <div><h4>Apps</h4><a href="#craftpricer">CraftPricer</a><a href="#craftcommand">CraftCommand</a><a href="#brainjar">BrainJar</a><a href="#fammesh">FamMesh</a></div>
+      <div><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><p class="copyright">© 2026 AppsByLogik. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
