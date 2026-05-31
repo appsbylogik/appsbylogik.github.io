@@ -1,20 +1,7 @@
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
-const dropdownButton = document.querySelector('.dropdown-button');
-
-menuToggle?.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-dropdownButton?.addEventListener('click', () => {
-  const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
-  dropdownButton.setAttribute('aria-expanded', String(!expanded));
-});
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    menuToggle?.setAttribute('aria-expanded', 'false');
-  });
-});
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const dropBtn = document.querySelector('.dropbtn');
+const dropdown = document.querySelector('.dropdown');
+if (menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+if (dropBtn) dropBtn.addEventListener('click', (e) => { e.preventDefault(); dropdown.classList.toggle('open'); });
+document.addEventListener('click', (e) => { if (dropdown && !dropdown.contains(e.target)) dropdown.classList.remove('open'); });
