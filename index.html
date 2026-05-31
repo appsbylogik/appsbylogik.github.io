@@ -11,13 +11,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <header class="topbar">
   <div class="container nav">
-    <a class="brand" href="index.html" aria-label="AppsByLogik home"><img src="assets/LogoWeb.png" alt="AppsByLogik logo"></a>
+    <a class="brand" href="index.html" aria-label="AppsByLogik home">
+      <img src="assets/LogoWeb.png" alt="AppsByLogik logo">
+    </a>
+
     <button class="menu-toggle" aria-label="Open menu">☰</button>
+
     <nav class="nav-links">
       <a href="index.html">Home</a>
+
       <div class="dropdown">
         <button class="dropbtn">Apps⌄</button>
         <div class="dropdown-menu">
@@ -25,6 +31,7 @@
           <a href="apps/fammesh.html">FamMesh <span>→</span></a>
         </div>
       </div>
+
       <a href="#about">About</a>
       <a href="policies/index.html">Policies</a>
       <a href="#contact">Contact</a>
@@ -38,39 +45,100 @@
       <div class="section-head">
         <div class="eyebrow">Our Apps</div>
         <h2>Simple apps. Professional results.</h2>
-        <p>user-focused apps for creators, families, small businesses, and everyday problem solvers.</p>
+        <p>User-focused apps for creators, families, small businesses, and everyday problem solvers.</p>
       </div>
+
       <div class="app-grid">
-        <article class="app-card"><div class="app-icon">💸</div><h3>CraftPricer</h3><p>Pricing tools for makers, crafters, and small creative businesses.</p><a class="learn" href="apps/craftpricer.html">View app →</a></article>
-        <article class="app-card"><div class="app-icon">👨‍👩‍👧‍👦</div><h3>FamMesh</h3><p>Family organization, chores, reminders, and household planning.</p><a class="learn" href="apps/fammesh.html">View app →</a></article>
-        <article class="app-card"><div class="app-icon">＋</div><h3>More Apps</h3><p>A growing collection of useful mobile tools from AppsByLogik.</p><a class="learn" href="policies/index.html">View policies →</a></article>
+        <article class="app-card">
+          <div class="app-icon">💸</div>
+          <h3>CraftPricer</h3>
+          <p>Pricing tools for makers, crafters, and small creative businesses.</p>
+          <a class="learn" href="apps/craftpricer.html">View app →</a>
+        </article>
+
+        <article class="app-card">
+          <div class="app-icon">👨‍👩‍👧‍👦</div>
+          <h3>FamMesh</h3>
+          <p>Family organization, chores, reminders, and household planning.</p>
+          <a class="learn" href="apps/fammesh.html">View app →</a>
+        </article>
+
+        <article class="app-card">
+          <div class="app-icon">＋</div>
+          <h3>More Apps</h3>
+          <p>A growing collection of useful mobile tools from AppsByLogik.</p>
+          <a class="learn" href="policies/index.html">View policies →</a>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="dark-section" id="about">
-    <div class="container split">
-      <div class="panel">
+    <div class="container">
+      <div class="panel about-panel-full">
         <div class="eyebrow">About AppsByLogik</div>
         <h2>Built for practical problems, not bloated software.</h2>
-        <p class="muted">AppsByLogik focuses on apps that are simple to understand, polished enough to trust, and useful enough to become part of everyday routines.</p>
-      </div>
+        <p class="muted">
+          AppsByLogik focuses on apps that are simple to understand, polished enough to trust,
+          and useful enough to become part of everyday routines.
+        </p>
       </div>
     </div>
   </section>
 
   <section class="light" id="contact">
-    <div class="container contact-card">
-      <div>
-        <div class="eyebrow">Contact</div>
-        <h2>Need support or have a question?</h2>
-        <p>Use this section for app support, privacy questions, business questions, or general AppsByLogik contact information.</p>
-      </div>
-      <div class="content-card">
-        <h3>Email</h3>
-        <p><a class="learn" href="mailto:appsbylogik@gmail.com">appsbylogik@gmail.com</a></p>
-        <h3>Support</h3>
-        <p>For app support, include the app name, device type, and a short description of the issue.</p>
+    <div class="container">
+      <div class="contact-card contact-card-full">
+        <div class="contact-info">
+          <div class="eyebrow">Contact</div>
+          <h2>Need support or have a question?</h2>
+          <p>
+            Use this section for app support, privacy questions, business questions,
+            or general AppsByLogik contact information.
+          </p>
+
+          <div class="content-card email-card">
+            <h3>Email</h3>
+            <p>
+              <a class="learn" href="mailto:appsbylogik@gmail.com">appsbylogik@gmail.com</a>
+            </p>
+
+            <h3>Support</h3>
+            <p>
+              For app support, include the app name, device type, and a short description of the issue.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-card contact-form-card">
+          <h3>Send a Message</h3>
+
+          <form action="https://formsubmit.co/appsbylogik@gmail.com" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="New AppsByLogik Website Contact">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+            <label for="app">App</label>
+            <select id="app" name="app">
+              <option value="General Question">General Question</option>
+              <option value="CraftPricer">CraftPricer</option>
+              <option value="FamMesh">FamMesh</option>
+              <option value="Privacy / Data Deletion">Privacy / Data Deletion</option>
+              <option value="Business Inquiry">Business Inquiry</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
+
+            <button type="submit" class="form-button">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -80,9 +148,14 @@
   <div class="container footer-grid">
     <img src="assets/LogoCircle.png" alt="AppsByLogik logo">
     <div>© 2026 AppsByLogik. All rights reserved.</div>
-    <div><a href="policies/privacy.html">Privacy</a> · <a href="policies/terms.html">Terms</a> · <a href="policies/data-deletion.html">Data Deletion</a></div>
+    <div>
+      <a href="policies/privacy.html">Privacy</a> ·
+      <a href="policies/terms.html">Terms</a> ·
+      <a href="policies/data-deletion.html">Data Deletion</a>
+    </div>
   </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
