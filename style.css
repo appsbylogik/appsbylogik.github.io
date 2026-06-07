@@ -676,4 +676,16 @@ p {
   max-width: 100%;
   height: auto;
 }
+  .google-play-badge {
+  display: inline-block;
+  width: 220px;
+  max-width: 100%;
+  margin-top: 22px;
+}
+
+.google-play-badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 }
