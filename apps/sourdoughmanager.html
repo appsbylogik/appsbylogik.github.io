@@ -3,14 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FamMesh | AppsByLogik</title>
-  <meta name="description" content="FamMesh is a premium family hub app for chores, rewards, bills, shared calendars, meals, memories, themes, and household organization.">
+  <title>Sourdough Manager | AppsByLogik</title>
+  <meta name="description" content="Sourdough Manager is a simple, warm, and practical baking companion for sourdough bakers with starter tracking, feeding ratios, loaf building, timers, checklist, notes, and backup.">
 
   <link rel="icon" href="../assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .sourdough-fallback-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+    }
+
+    @media (max-width: 600px) {
+      .sourdough-fallback-logo {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -46,17 +69,17 @@
     <div class="container">
       <div class="page-hero-content">
         <div class="app-page-title">
-          <img class="app-page-logo" src="../assets/fammeshlogo.png" alt="FamMesh app logo">
+          <div class="sourdough-fallback-logo" aria-hidden="true">🍞</div>
           <div>
             <div class="eyebrow">AppsByLogik App</div>
-            <h1>FamMesh</h1>
+            <h1>Sourdough Manager</h1>
           </div>
         </div>
 
         <p class="muted">
-          FamMesh brings everything your household needs into one beautifully designed app.
-          No more juggling sticky notes, group texts, and five different apps — just one calm,
-          organized space for your whole family.
+          Sourdough Manager is a simple, warm, and practical baking companion for sourdough bakers.
+          Use it to track your starter, calculate feeding ratios, build loaf recipes, manage baking timers,
+          follow a checklist, and keep notes or recipes in one place.
         </p>
       </div>
     </div>
@@ -65,37 +88,37 @@
   <section class="light">
     <div class="container">
       <div class="section-head">
-        <div class="eyebrow">Family Hub</div>
-        <h2>The premium hub for your family.</h2>
+        <div class="eyebrow">Baking Companion</div>
+        <h2>A cleaner way to organize your sourdough process.</h2>
         <p>
-          Chores, rewards, bills, shared calendars, meals, memories, themes, and household management
-          in one connected place.
+          Whether you are feeding a starter, preparing a levain, planning a loaf, or timing your bake,
+          Sourdough Manager helps keep the process organized and easier to follow.
         </p>
       </div>
 
       <div class="app-grid">
         <article class="app-card">
-          <div class="app-icon">🏠</div>
-          <h3>One Hub</h3>
+          <div class="app-icon">🌾</div>
+          <h3>Starter Tracking</h3>
           <p>
-            Jump straight into chores, rewards, bills, your shared calendar, meals, and family memories
-            from a single home screen.
+            Keep notes on your sourdough starters, feeding details, starter behavior, and baking observations.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">✅</div>
-          <h3>Chores & Rewards</h3>
+          <div class="app-icon">⚖️</div>
+          <h3>Ratio Calculator</h3>
           <p>
-            Assign chores, track who completed what, and motivate kids and adults with a built-in rewards system.
+            Quickly calculate starter, water, and flour amounts for feeding ratios such as 1:1:1,
+            1:2:2, 1:3:3, and more.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">💰</div>
-          <h3>Bills & Rent</h3>
+          <div class="app-icon">🍞</div>
+          <h3>Loaf Builder</h3>
           <p>
-            Keep shared expenses, rent, and recurring bills organized and visible to the household.
+            Calculate flour, water, starter, and salt for one or more loaves with helpful dough total guidance.
           </p>
         </article>
       </div>
@@ -105,12 +128,12 @@
   <section class="dark-section">
     <div class="container">
       <div class="panel about-panel-full">
-        <div class="eyebrow">Built For Households</div>
-        <h2>One calm place for daily family life.</h2>
+        <div class="eyebrow">Built For Home Bakers</div>
+        <h2>Sourdough without complicated spreadsheets.</h2>
         <p class="muted">
-          FamMesh is built for families and households that want better organization without making life more complicated.
-          It gives parents and household managers a clean way to manage schedules, chores, bills, meals, and memories
-          while keeping everything easy for the whole family to understand.
+          Sourdough Manager is built for home bakers who want a cleaner way to organize their sourdough process
+          without complicated spreadsheets or scattered notes. It helps you plan, calculate, time, and document
+          your bake from starter feeding through cooling your loaf.
         </p>
       </div>
     </div>
@@ -120,60 +143,61 @@
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Features</div>
-        <h2>Everything connected in one place.</h2>
+        <h2>Everything you need for a smoother bake day.</h2>
         <p>
-          FamMesh helps your household stay organized with simple tools made for real family routines.
+          Track your starter, calculate recipes, manage timers, follow checklists, and save notes in one place.
         </p>
       </div>
 
       <div class="app-grid">
         <article class="app-card">
-          <div class="app-icon">📅</div>
-          <h3>Shared Calendar</h3>
+          <div class="app-icon">🧮</div>
+          <h3>True Dough Totals</h3>
           <p>
-            Sync with Google Calendar so everyone knows what is coming up, including appointments,
-            events, deadlines, and family plans.
+            The Loaf Builder explains true dough totals, effective hydration, salt percentage,
+            and prefermented flour.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">📸</div>
-          <h3>Memories</h3>
+          <div class="app-icon">🌾</div>
+          <h3>Flour Guidance</h3>
           <p>
-            Capture and share favorite family moments and photos in a private space made just for your people.
+            Choose flour types such as store-bought white flour, bread flour, and fresh milled hard white wheat
+            for helpful baking guidance.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">🍽️</div>
-          <h3>Meals & Tasks</h3>
+          <div class="app-icon">⏱️</div>
+          <h3>Baking Timers</h3>
           <p>
-            Plan meals, manage to-dos, and keep daily life running smoothly with simple shared organization tools.
+            Create timers for starter peak time, stretch and folds, bulk fermentation,
+            final proofing, baking, and more.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">🎨</div>
-          <h3>Personal Themes</h3>
+          <div class="app-icon">✅</div>
+          <h3>Baking Checklist</h3>
           <p>
-            Make FamMesh feel like home with multiple visual themes, including Signature and Luxury collections.
+            Follow a simple checklist from feeding your starter through baking and cooling your loaf.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">🔒</div>
-          <h3>Management Portal</h3>
+          <div class="app-icon">📝</div>
+          <h3>Notes & Recipes</h3>
           <p>
-            Parents and household managers can oversee family members, bills, chores, settings,
-            and optional PIN-protected areas.
+            Save sourdough notes, reminders, and recipes directly in the app so your baking details stay organized.
           </p>
         </article>
 
         <article class="app-card">
-          <div class="app-icon">☁️</div>
-          <h3>Multi-Device Sync</h3>
+          <div class="app-icon">💾</div>
+          <h3>Backup & Restore</h3>
           <p>
-            Your family’s world stays available wherever you go with sync across devices.
+            Manually save a backup file and restore your app data later when needed.
           </p>
         </article>
       </div>
@@ -183,13 +207,11 @@
   <section class="dark-section">
     <div class="container">
       <div class="panel about-panel-full">
-        <div class="eyebrow">Premium</div>
-        <h2>Try Premium free for 14 days.</h2>
+        <div class="eyebrow">Remove Ads</div>
+        <h2>Support development with a one-time purchase.</h2>
         <p class="muted">
-          Every new household gets a full 14-day trial of FamMesh Premium with unlimited family members,
-          unlimited photo memories, bills and rent tracking, premium themes, Google Calendar sync,
-          multi-device sync, and an ad-free experience. After the trial, FamMesh stays free with core features,
-          and you can upgrade anytime to unlock everything again.
+          Sourdough Manager includes an option to remove ads with a one-time purchase.
+          This helps support continued development while keeping the app simple and useful for home bakers.
         </p>
       </div>
     </div>
@@ -200,7 +222,7 @@
       <div class="contact-card contact-card-full">
         <div class="contact-info">
           <div class="eyebrow">Support</div>
-          <h2>Need help with FamMesh?</h2>
+          <h2>Need help with Sourdough Manager?</h2>
           <p>
             For support, privacy questions, account deletion, or data deletion requests,
             contact AppsByLogik by email.
@@ -212,10 +234,10 @@
               <a class="learn" href="mailto:appsbylogik@gmail.com">appsbylogik@gmail.com</a>
             </p>
 
-            <h3>Privacy Policy</h3>
+            <h3>Policies</h3>
             <p>
-              <a class="learn" href="../policies/fammesh-privacy.html">
-                View FamMesh Privacy Policy →
+              <a class="learn" href="../policies/index.html">
+                View AppsByLogik Policies →
               </a>
             </p>
           </div>
@@ -225,7 +247,7 @@
           <h3>Send a Message</h3>
 
           <form action="https://formsubmit.co/appsbylogik@gmail.com" method="POST" class="contact-form">
-            <input type="hidden" name="_subject" value="FamMesh Support Request">
+            <input type="hidden" name="_subject" value="Sourdough Manager Support Request">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
 
@@ -237,12 +259,11 @@
 
             <label for="topic">Topic</label>
             <select id="topic" name="topic">
-              <option value="FamMesh Support">FamMesh Support</option>
-              <option value="Premium Subscription">Premium Subscription</option>
-              <option value="Google Calendar Sync">Google Calendar Sync</option>
+              <option value="Sourdough Manager Support">Sourdough Manager Support</option>
+              <option value="Remove Ads Purchase">Remove Ads Purchase</option>
+              <option value="Backup and Restore">Backup and Restore</option>
+              <option value="Calculator Question">Calculator Question</option>
               <option value="Privacy Question">Privacy Question</option>
-              <option value="Account Deletion">Account Deletion</option>
-              <option value="Data Deletion">Data Deletion</option>
               <option value="Other">Other</option>
             </select>
 
