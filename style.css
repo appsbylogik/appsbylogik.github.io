@@ -664,6 +664,7 @@ p {
     align-items: flex-start;
     flex-direction: column;
   }
+ 
   .play-store-button {
   display: inline-flex;
   align-items: center;
