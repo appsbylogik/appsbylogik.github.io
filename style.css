@@ -124,7 +124,8 @@ a {
 }
 
 .dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
+.dropdown:focus-within .dropdown-menu,
+.dropdown.open .dropdown-menu {
   display: block;
 }
 
@@ -573,8 +574,7 @@ p {
     min-width: 100%;
   }
 
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
+  .dropdown.open .dropdown-menu {
     display: block;
   }
 
