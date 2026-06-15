@@ -666,37 +666,40 @@ p {
   }
 }
 
-/* Featured app preview image */
+/* Featured app banner image */
 .featured-image-section {
-  padding: 34px 20px 48px;
+  padding: 28px 20px 34px;
   background: #f7f8fb;
 }
 
 .featured-image-wrap {
-  width: min(760px, 100%);
+  width: min(900px, 100%);
   margin: 0 auto;
 }
 
 .featured-image {
   width: 100%;
-  height: auto;
+  height: 220px;
   display: block;
   margin: 0 auto;
-  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
   border: 1px solid rgba(15, 23, 42, 0.10);
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.14);
 }
 
 @media (max-width: 760px) {
   .featured-image-section {
-    padding: 24px 14px 36px;
+    padding: 22px 14px 30px;
   }
 
   .featured-image-wrap {
-    width: min(560px, 100%);
+    width: min(640px, 100%);
   }
 
   .featured-image {
+    height: 170px;
     border-radius: 12px;
   }
 }
