@@ -664,6 +664,21 @@ p {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .featured-image-section {
+  padding: 40px 0;
+  background: #f7f8fb;
+}
+
+.featured-image {
+  width: 100%;
+  max-width: 1024px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+}
  
   .google-play-badge {
   display: inline-block;
