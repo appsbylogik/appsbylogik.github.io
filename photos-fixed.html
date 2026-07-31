@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Family photo gallery" />
+  <title>Photos</title>
+  <style>
+    :root {
+      --background: #f5f2ec;
+      --card: #ffffff;
+      --text: #2f2a26;
+      --muted: #716a63;
+      --shadow: 0 8px 24px rgba(39, 31, 25, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+    }
+    header {
+      padding: 48px 20px 34px;
+      text-align: center;
+      background: linear-gradient(135deg, #e8ded2, #f8f5f0);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+    }
+    header p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    main {
+      width: min(1200px, calc(100% - 28px));
+      margin: 32px auto 60px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .photo-card {
+      margin: 0;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(39,31,25,.18);
+    }
+    .photo-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: zoom-in;
+    }
+    .photo-button img {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    figcaption {
+      padding: 13px 15px 16px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.4;
+    }
+    footer {
+      padding: 24px 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 76px;
+      background: rgba(0,0,0,.92);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-content {
+      position: relative;
+      z-index: 2001;
+      width: 100%;
+      max-width: 1100px;
+      text-align: center;
+    }
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: 82vh;
+      margin: 0 auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0,0,0,.45);
+    }
+    .lightbox-caption {
+      margin-top: 12px;
+      color: white;
+      font-size: 1rem;
+    }
+    .close-button, .nav-button {
+      position: fixed;
+      z-index: 2010;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 2px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      color: white;
+      background: rgba(0,0,0,.72);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .close-button {
+      top: max(14px, env(safe-area-inset-top));
+      right: max(14px, env(safe-area-inset-right));
+      width: 50px;
+      height: 50px;
+      font-size: 34px;
+    }
+    .nav-button {
+      top: 50%;
+      width: 54px;
+      height: 54px;
+      font-size: 38px;
+      transform: translateY(-50%);
+    }
+    .previous-button { left: max(14px, env(safe-area-inset-left)); }
+    .next-button { right: max(14px, env(safe-area-inset-right)); }
+    .close-button:hover, .nav-button:hover {
+      background: rgba(255,255,255,.22);
+    }
+    .close-button:focus-visible, .nav-button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 3px;
+    }
+    @media (max-width: 600px) {
+      header { padding-top: 34px; }
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .photo-button img { height: 165px; }
+      figcaption { padding: 10px; font-size: .85rem; }
+      .lightbox { padding: 70px 12px 24px; }
+      .lightbox img { max-height: 72vh; }
+      .nav-button {
+        top: auto;
+        bottom: max(18px, env(safe-area-inset-bottom));
+        width: 50px;
+        height: 50px;
+        transform: none;
+      }
+      .previous-button { left: calc(50% - 65px); }
+      .next-button { right: calc(50% - 65px); }
+      .lightbox-caption { padding-bottom: 65px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Family Photos</h1>
+    <p>
+      A collection of family memories, special moments, holidays, and everyday life.
+      Click or tap any picture to view it larger.
+    </p>
+  </header>
+
+  <main>
+    <section class="gallery" aria-label="Family photo gallery">
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/1.jpg"
+          data-caption="Gizmo Our Pup">
+          <img src="photos/1.jpg"
+            alt="Gizmo Our Pup"
+            loading="lazy" />
+        </button>
+        <figcaption>Gizmo Our Pup</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/2.jpg"
+          data-caption="Aidan on the boat in Florida">
+          <img src="photos/2.jpg"
+            alt="Aidan on the boat in Florida"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidan on the boat in Florida</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/3.jpg"
+          data-caption="Fish we caught on Florida trip!">
+          <img src="photos/3.jpg"
+            alt="Fish we caught on Florida trip!"
+            loading="lazy" />
+        </button>
+        <figcaption>Fish we caught on Florida trip!</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/4.jpg"
+          data-caption="Jelly and I at a concert">
+          <img src="photos/4.jpg"
+            alt="Jelly and I at a concert"
+            loading="lazy" />
+        </button>
+        <figcaption>Jelly and I at a concert</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/5.jpg"
+          data-caption="Nadia and I at a concert">
+          <img src="photos/5.jpg"
+            alt="Nadia and I at a concert"
+            loading="lazy" />
+        </button>
+        <figcaption>Nadia and I at a concert</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/6.jpg"
+          data-caption="Aidan cleaning out a pumpkin">
+          <img src="photos/6.jpg"
+            alt="Aidan cleaning out a pumpkin"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidan cleaning out a pumpkin</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/7.jpg"
+          data-caption="Me holding Butters After Adopting him.">
+          <img src="photos/7.jpg"
+            alt="Me holding Butters After Adopting him"
+            loading="lazy" />
+        </button>
+        <figcaption>Me holding Butters After Adopting him</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/8.jpg"
+          data-caption="Butters being cute">
+          <img src="photos/8.jpg"
+            alt="Butters being cute"
+            loading="lazy" />
+        </button>
+        <figcaption>Butters being cute</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/9.jpg"
+          data-caption="Butters being cute again">
+          <img src="photos/9.jpg"
+            alt="Butters being cute again"
+            loading="lazy" />
+        </button>
+        <figcaption>Butters being cute again</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/10.jpg"
+          data-caption="Aidans graduation and him on the jumbotron!">
+          <img src="photos/10.jpg"
+            alt="Aidans graduation and him on the jumbotron!"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidans graduation and him on the jumbotron!</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/11.jpg"
+          data-caption="Aidan and I after his graduation">
+          <img src="photos/11.jpg"
+            alt="Aidan and I after his graduation"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidan and I after his graduation</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/12.jpg"
+          data-caption="Aidan and his sisters Brinn and Adalynn after his graduation">
+          <img src="photos/12.jpg"
+            alt="Aidan and his sisters Brinn and Adalynn after his graduation"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidan and his sisters Brinn and Adalynn after his graduation</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/13.jpg"
+          data-caption="Aidan and Nadia after his graduation">
+          <img src="photos/13.jpg"
+            alt="Aidan and Nadia after his graduation"
+            loading="lazy" />
+        </button>
+        <figcaption>Aidan and Nadia after his graduation</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/14.jpg"
+          data-caption="Adalynn hugging a gator">
+          <img src="photos/14.jpg"
+            alt="Adalynn hugging a gator"
+            loading="lazy" />
+        </button>
+        <figcaption>Adalynn hugging a gator</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/15.jpg"
+          data-caption="Wedding Photo 1">
+          <img src="photos/15.jpg"
+            alt="Wedding Photo 1"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 1</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/16.jpg"
+          data-caption="Wedding Photo 2">
+          <img src="photos/16.jpg"
+            alt="Wedding Photo "
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 2</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/17.jpg"
+          data-caption="Wedding Photo 3">
+          <img src="photos/17.jpg"
+            alt="Wedding Photo 3"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 3</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/18.jpg"
+          data-caption="Wedding Photo 4">
+          <img src="photos/18.jpg"
+            alt="Wedding Photo 4"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 4</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/19.jpg"
+          data-caption="Wedding Photo 5">
+          <img src="photos/19.jpg"
+            alt="Wedding Photo 5"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 5</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/20.jpg"
+          data-caption="Wedding Photo 6">
+          <img src="photos/20.jpg"
+            alt="Wedding Photo 6"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 6</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/21.jpg"
+          data-caption="Wedding Photo 7">
+          <img src="photos/21.jpg"
+            alt="Wedding Photo 7"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 7</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/22.jpg"
+          data-caption="Wedding Photo 8">
+          <img src="photos/22.jpg"
+            alt="Wedding Photo 8"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 8</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/23.jpg"
+          data-caption="Wedding Photo 9">
+          <img src="photos/23.jpg"
+            alt="Wedding Photo 9"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 9</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/24.jpg"
+          data-caption="Wedding Photo 10">
+          <img src="photos/24.jpg"
+            alt="Wedding Photo 10"
+            loading="lazy" />
+        </button>
+        <figcaption>Wedding Photo 10</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/25.jpg"
+          data-caption="Jelly and I on a boat on our family Florida trip">
+          <img src="photos/25.jpg"
+            alt="Jelly and I on a boat on our family Florida trip"
+            loading="lazy" />
+        </button>
+        <figcaption>Jelly and I on a boat on our family Florida trip</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="photos/26.jpg"
+          data-caption="Jelly and I on a boat in Florida">
+          <img src="photos/26.jpg"
+            alt="Jelly and I on a boat in Florida"
+            loading="lazy" />
+        </button>
+        <figcaption>Jelly and I on a boat in Florida</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>Made with love for our family.</footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+       aria-label="Enlarged photograph" aria-hidden="true">
+
+    <button class="close-button" id="closeButton" type="button"
+            aria-label="Close enlarged photograph">&times;</button>
+
+    <button class="nav-button previous-button" id="previousButton" type="button"
+            aria-label="View previous photograph">&#8249;</button>
+
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption" aria-live="polite"></div>
+    </div>
+
+    <button class="nav-button next-button" id="nextButton" type="button"
+            aria-label="View next photograph">&#8250;</button>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const closeButton = document.getElementById("closeButton");
+    const previousButton = document.getElementById("previousButton");
+    const nextButton = document.getElementById("nextButton");
+    const photoButtons = Array.from(document.querySelectorAll(".photo-button"));
+
+    let currentIndex = 0;
+    let lastFocusedButton = null;
+
+    function showPhoto(index) {
+      currentIndex = (index + photoButtons.length) % photoButtons.length;
+      const button = photoButtons[currentIndex];
+      const thumbnail = button.querySelector("img");
+      const caption = button.dataset.caption || thumbnail.alt || "";
+
+      lightboxImage.src = button.dataset.full;
+      lightboxImage.alt = thumbnail.alt || caption;
+      lightboxCaption.textContent =
+        caption + " (" + (currentIndex + 1) + " of " + photoButtons.length + ")";
+    }
+
+    function openLightbox(index) {
+      lastFocusedButton = photoButtons[index];
+      showPhoto(index);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      document.body.style.overflow = "";
+      if (lastFocusedButton) lastFocusedButton.focus();
+    }
+
+    photoButtons.forEach((button, index) => {
+      button.addEventListener("click", () => openLightbox(index));
+    });
+
+    closeButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeLightbox();
+    });
+
+    previousButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      showPhoto(currentIndex - 1);
+    });
+
+    nextButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      showPhoto(currentIndex + 1);
+    });
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPhoto(currentIndex - 1);
+      if (event.key === "ArrowRight") showPhoto(currentIndex + 1);
+    });
+
+    let touchStartX = 0;
+
+    lightbox.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", (event) => {
+      const distance = event.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(distance) < 50) return;
+      showPhoto(distance > 0 ? currentIndex - 1 : currentIndex + 1);
+    }, { passive: true });
+  </script>
+</body>
+</html>
