@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Our family photo gallery" />
+  <title>Our Family Photos</title>
+
+  <style>
+    :root {
+      --background: #f5f2ec;
+      --card: #ffffff;
+      --text: #2f2a26;
+      --muted: #716a63;
+      --accent: #7b5d46;
+      --shadow: 0 8px 24px rgba(39, 31, 25, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+    }
+
+    header {
+      padding: 48px 20px 34px;
+      text-align: center;
+      background: linear-gradient(135deg, #e8ded2, #f8f5f0);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+    }
+
+    header p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(1200px, calc(100% - 28px));
+      margin: 32px auto 60px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      margin: 0;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(39, 31, 25, 0.18);
+    }
+
+    .photo-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: zoom-in;
+    }
+
+    .photo-button img {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    figcaption {
+      padding: 13px 15px 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    footer {
+      padding: 24px 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Full-screen enlarged photo */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .close-button {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      color: white;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 34px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .photo-button img {
+        height: 165px;
+      }
+
+      figcaption {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+
+      .lightbox {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Our Family Photos</h1>
+    <p>
+      A collection of family memories, special moments, holidays, and everyday life.
+      Click or tap any picture to view it larger.
+    </p>
+  </header>
+
+  <main>
+    <section class="gallery" aria-label="Family photo gallery">
+
+      <!--
+        HOW TO ADD A PHOTO:
+        1. Put your image inside a folder named "images".
+        2. Copy one complete <figure> block below.
+        3. Change the image filename and caption.
+      -->
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="images/family-photo-1.jpg"
+          data-caption="Family gathering">
+          <img src="images/family-photo-1.jpg"
+            alt="Family gathering"
+            loading="lazy" />
+        </button>
+        <figcaption>Family gathering</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="images/family-photo-2.jpg"
+          data-caption="A special family memory">
+          <img src="images/family-photo-2.jpg"
+            alt="A special family memory"
+            loading="lazy" />
+        </button>
+        <figcaption>A special family memory</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="images/family-photo-3.jpg"
+          data-caption="Spending time together">
+          <img src="images/family-photo-3.jpg"
+            alt="Spending time together"
+            loading="lazy" />
+        </button>
+        <figcaption>Spending time together</figcaption>
+      </figure>
+
+      <figure class="photo-card">
+        <button class="photo-button" type="button"
+          data-full="images/family-photo-4.jpg"
+          data-caption="One of our favorite pictures">
+          <img src="images/family-photo-4.jpg"
+            alt="One of our favorite pictures"
+            loading="lazy" />
+        </button>
+        <figcaption>One of our favorite pictures</figcaption>
+      </figure>
+
+    </section>
+  </main>
+
+  <footer>
+    Made with love for our family.
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+    aria-label="Enlarged photograph">
+    <button class="close-button" id="closeButton" type="button"
+      aria-label="Close enlarged photograph">&times;</button>
+
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const closeButton = document.getElementById("closeButton");
+    const photoButtons = document.querySelectorAll(".photo-button");
+
+    function openLightbox(button) {
+      const fullImage = button.dataset.full;
+      const caption = button.dataset.caption || "";
+      const thumbnail = button.querySelector("img");
+
+      lightboxImage.src = fullImage;
+      lightboxImage.alt = thumbnail.alt;
+      lightboxCaption.textContent = caption;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImage.src = "";
+      document.body.style.overflow = "";
+    }
+
+    photoButtons.forEach((button) => {
+      button.addEventListener("click", () => openLightbox(button));
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
