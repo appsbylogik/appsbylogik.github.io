@@ -200,11 +200,21 @@
   </main>
   <script>
     const openApp = document.getElementById("open-app");
-    const tokenPayload = window.location.hash || window.location.search || "";
-    openApp.href = "trailfit://reset-password" + tokenPayload;
+    const hint = document.getElementById("hint");
+    const tokenPayload = (window.location.hash || window.location.search || "")
+      .replace(/^[?#]/, "");
+    if (tokenPayload) {
+      openApp.href = "trailfit://reset-password?" + tokenPayload;
+    } else {
+      openApp.setAttribute("aria-disabled", "true");
+      openApp.style.opacity = ".55";
+      openApp.style.pointerEvents = "none";
+      hint.textContent =
+        "This reset page did not receive a password token. Request a new reset email and open the latest link.";
+    }
     openApp.addEventListener("click", function () {
       setTimeout(function () {
-        document.getElementById("hint").textContent =
+        hint.textContent =
           "If TrailFit did not open, install the newest build and reopen this reset email on your phone.";
       }, 1200);
     });
