@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#06100d" />
+  <title>Reset TrailFit Password</title>
+  <style>
+    :root {
+      --bg: #06100d;
+      --panel: rgba(13, 24, 22, .94);
+      --panel-2: rgba(20, 34, 31, .88);
+      --border: rgba(148, 180, 157, .22);
+      --green: #78c423;
+      --orange: #ff8a00;
+      --text: #f7faf4;
+      --muted: #c8d3cd;
+      --soft: #91a098;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(165deg, rgba(6, 16, 13, .68), rgba(6, 16, 13, .96)),
+        radial-gradient(circle at 50% 0%, rgba(58, 113, 47, .42), transparent 42%),
+        linear-gradient(135deg, #0b1d16 0%, #06100d 58%, #030706 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      background-image:
+        repeating-radial-gradient(ellipse at 48% 22%,
+          transparent 0 32px,
+          rgba(120, 196, 35, .24) 33px 34px,
+          transparent 35px 58px);
+      transform: rotate(-8deg) scale(1.18);
+    }
+
+    .wrap {
+      width: min(100%, 640px);
+      position: relative;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--panel), rgba(7, 14, 12, .96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(28px, 6vw, 48px);
+      text-align: center;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .52);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--green), var(--orange));
+    }
+
+    .logo {
+      width: min(220px, 72%);
+      display: block;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 16px 24px rgba(0, 0, 0, .35));
+    }
+
+    .status {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #07100d;
+      background: radial-gradient(circle at 35% 30%, #a8ef4f, var(--green));
+      box-shadow: 0 0 0 9px rgba(120, 196, 35, .12);
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 8vw, 52px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .copy {
+      max-width: 470px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: clamp(17px, 4vw, 20px);
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin: 30px auto 0;
+      max-width: 390px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 17px 22px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #8bd32a, var(--green));
+      color: #07100d;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 12px 26px rgba(120, 196, 35, .22);
+    }
+
+    .secondary {
+      display: block;
+      width: 100%;
+      padding: 15px 22px;
+      border-radius: 14px;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .small {
+      margin: 20px auto 0;
+      max-width: 440px;
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      color: var(--orange);
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 16px; }
+      .card { border-radius: 20px; }
+      .status {
+        width: 66px;
+        height: 66px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="reset-title">
+      <img class="logo" src="/assets/trailfit_logo.png" alt="TrailFit logo" />
+      <div class="status" aria-hidden="true">!</div>
+      <p class="eyebrow">Password reset</p>
+      <h1 id="reset-title">Open TrailFit to finish.</h1>
+      <p class="copy">
+        Your reset link is valid. Tap the button below on your phone and TrailFit will open the password reset screen.
+      </p>
+      <div class="actions">
+        <a id="open-app" class="button" href="trailfit://reset-password">Open TrailFit</a>
+        <a class="secondary" href="https://appsbylogik.com/trailfit-verified.html">Back to TrailFit</a>
+      </div>
+      <p class="small" id="hint">
+        If TrailFit does not open, make sure the newest app build is installed, then tap Open TrailFit again.
+      </p>
+      <div class="footer">Stronger rides. Better you.</div>
+    </section>
+  </main>
+  <script>
+    const openApp = document.getElementById("open-app");
+    const tokenPayload = window.location.hash || window.location.search || "";
+    openApp.href = "trailfit://reset-password" + tokenPayload;
+    openApp.addEventListener("click", function () {
+      setTimeout(function () {
+        document.getElementById("hint").textContent =
+          "If TrailFit did not open, install the newest build and reopen this reset email on your phone.";
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
